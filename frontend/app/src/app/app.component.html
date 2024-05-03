@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cloudlink</title>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <img src="../assets/logo.jpg" alt="logo.jpg"/>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact Us</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="row">
+    <div class="col-md-6">
+      <form (ngSubmit)="onSubmit()" class="ms-4 mt-5 d-flex">
+        <input class="form-control me-2" type="text" [(ngModel)]="prompt" name="prompt" placeholder="Enter prompt">
+        <button type="submit" class="btn btn-outline-success">Generate</button>
+      </form>
+    </div>
+  </div>
+
+  <div *ngIf="loading; else generatedTextsSection" class="text-center mt-3">
+    <div class="spinner-border" role="status">
+      <span class="sr-only"></span>
+    </div>
+  </div>
+
+  <ng-template #generatedTextsSection>
+    <div *ngFor="let text of generatedTexts" class="mt-3 ms-4">
+      <p>{{ text }}</p>
+    </div>
+  </ng-template>
+
+</body>
+</html>
