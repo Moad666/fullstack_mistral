@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AppServiceService {
-  private apiUrl = 'http://127.0.0.1:5000/generate';
+  private apiUrl = 'flask-mistral.vercel.app';
 
   constructor(private http: HttpClient) { }
   generateText(prompt: string): Observable<any> {
